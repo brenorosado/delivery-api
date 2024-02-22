@@ -1,31 +1,15 @@
 import { Expose } from "class-transformer";
+import { BaseEntity } from "src/common/entities/base-entity";
 
-export class CompanyDto {
+export class CompanyDto extends BaseEntity {
     constructor(partial: Partial<CompanyDto>) {
+        super();
         Object.assign(this, partial);
     }
-
-    @Expose()
-    id: string;
 
     @Expose()
     name: string;
 
     @Expose()
     taxNumber: string
-
-    @Expose()
-    deleted: boolean;
-    
-    @Expose()
-    updatedAt: Date;
-
-    @Expose()
-    updatedBy: string;
-
-    @Expose()
-    createdAt: Date;
-
-    @Expose()
-    createdBy: string;
 }

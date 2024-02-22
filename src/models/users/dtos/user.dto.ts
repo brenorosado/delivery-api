@@ -1,13 +1,12 @@
 import { Exclude, Expose } from "class-transformer";
+import { BaseEntity } from "src/common/entities/base-entity";
 import { CompanyDto } from "src/models/companies/dtos/company.dto";
 
-export class UserDto {
+export class UserDto extends BaseEntity {
     constructor(partial: Partial<UserDto>) {
+        super();
         Object.assign(this, partial);
     }
-
-    @Expose()
-    id: string;
 
     @Expose()
     name: string;
@@ -23,19 +22,4 @@ export class UserDto {
 
     @Exclude()
     companyId: string;
-
-    @Expose()
-    deleted: boolean;
-    
-    @Expose()
-    updatedAt: Date;
-
-    @Expose()
-    updatedBy: string;
-
-    @Expose()
-    createdAt: Date;
-
-    @Expose()
-    createdBy: string;
 }
